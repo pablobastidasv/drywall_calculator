@@ -1,11 +1,10 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:drywall_calculator_dart/features/drywall_calculator/data/models/drywall_materials_model.dart';
 import 'package:drywall_calculator_dart/features/drywall_calculator/domain/entity/drywall_materials.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
 
 final materials = DrywallMaterialsModel(10.12, 4.92, 1.8, 20.66, 0.24, 13.52, 0.86, 202, 10.08);
 

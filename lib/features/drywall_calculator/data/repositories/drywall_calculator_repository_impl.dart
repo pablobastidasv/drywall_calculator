@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:drywall_calculator_dart/core/error/exceptions.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/platform/network_info.dart';
+import '../../../../core/network/network_info.dart';
 import '../datasources/drywall_calculator_data_source.dart';
 import '../datasources/drywall_calculator_local_data_source.dart';
 

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:drywall_calculator_dart/core/error/exceptions.dart';
 import 'package:drywall_calculator_dart/core/error/failures.dart';
-import 'package:drywall_calculator_dart/core/platform/network_info.dart';
+import 'package:drywall_calculator_dart/core/network/network_info.dart';
 import 'package:drywall_calculator_dart/features/drywall_calculator/data/datasources/drywall_calculator_data_source.dart';
 import 'package:drywall_calculator_dart/features/drywall_calculator/data/datasources/drywall_calculator_local_data_source.dart';
 import 'package:drywall_calculator_dart/features/drywall_calculator/data/models/drywall_materials_model.dart';
