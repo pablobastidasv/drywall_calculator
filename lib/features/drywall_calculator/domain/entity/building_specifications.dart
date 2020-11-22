@@ -15,12 +15,11 @@ class BuildSpecifications extends Equatable {
     @required this.long,
     @required this.width,
     this.material = Material.panel,
-    this.job = Job.ceiling
+    this.job = Job.ceiling,
   });
 
   @override
-  List<Object> get props => [
-    this.long, this.width,
-    this.material, this.job
-  ];
+  List<Object> get props => [this.long, this.width, this.material, this.job];
+
+  String get hashValue => hashCode.toString();
 }
