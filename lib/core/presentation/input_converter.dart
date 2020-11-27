@@ -2,8 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:drywall_calculator_dart/core/error/failures.dart';
 
 class InputConverter {
-
-  stringToUnsignedInteger(String positiveNumber) {
+  Either<Failure, int> stringToUnsignedInteger(String positiveNumber) {
     try {
       var parsedNumber = int.parse(positiveNumber);
       if (parsedNumber < 0) throw FormatException();
@@ -13,7 +12,7 @@ class InputConverter {
     }
   }
 
-  stringToUnsignedDouble(String positiveNumber) {
+  Either<Failure, double> stringToUnsignedDouble(String positiveNumber) {
     try {
       var doubleValue = double.parse(positiveNumber);
       if (doubleValue < 0) throw FormatException();

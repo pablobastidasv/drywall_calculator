@@ -10,3 +10,4 @@ abstract class Failure extends Equatable {
 
 class ApiFailure extends Failure {}
 class CacheFailure extends Failure {}
+class InvalidArgumentFailure extends Failure {}
