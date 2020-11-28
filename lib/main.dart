@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'injection_container.dart' as di;
+
+void main() async {
+  await di.init();
   runApp(MyApp());
 }
 
@@ -25,20 +28,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- int _counter = 0;
+  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
-     _counter++;
+      _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
-         mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
