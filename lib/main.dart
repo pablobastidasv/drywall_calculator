@@ -1,63 +1,38 @@
+import 'package:drywall_calculator_dart/route_generator.dart';
 import 'package:flutter/material.dart';
 
 import 'injection_container.dart' as di;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final routerGenerator = RouteGenerator();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Calculadora de materiales',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: Colors.yellow,
+        accentColor: Colors.yellow.shade800,
       ),
-      home: MyHomePage(),
+      initialRoute: '/',
+      onGenerateRoute: this.routerGenerator.generateRoute,
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+  void dispose() {
+    this.routerGenerator.dispose();
+    super.dispose();
   }
 }
