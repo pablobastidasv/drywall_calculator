@@ -24,7 +24,7 @@ Future _registerExternals() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
   // HttpClient
-  sl.registerLazySingleton(() => http.Client);
+  sl.registerLazySingleton(() => http.Client());
   // ConnectionChecker
   sl.registerLazySingleton(() => DataConnectionChecker());
 }
