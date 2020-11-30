@@ -38,7 +38,7 @@ void main() {
         drywallCalculatorApiDataSource.getMaterials(specifications);
 
         verify(mockHttpClient.get(
-          calculatorFunctionUrl,
+          any,
           headers: {'Content-Type': 'application/json'},
         ));
       });
@@ -47,6 +47,20 @@ void main() {
         final result = await drywallCalculatorApiDataSource.getMaterials(specifications);
 
         expect(result, materials);
+      });
+
+      test('verify that specifications are used in the URL', () async {
+        final _ = await drywallCalculatorApiDataSource.getMaterials(specifications);
+
+        var capturedUrl = verify(mockHttpClient.get(captureAny, headers: anyNamed('headers'))).captured[0];
+
+        if (capturedUrl is Uri) {
+          expect(capturedUrl, isNotNull);
+          expect(capturedUrl.queryParameters, isNotEmpty);
+          expect(capturedUrl.queryParameters.keys, ['long', 'width', 'material', 'wall_type']);
+        } else {
+          fail("Value must be a URI");
+        }
       });
     });
 
