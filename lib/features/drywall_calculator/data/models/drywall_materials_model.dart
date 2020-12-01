@@ -7,15 +7,15 @@ class DrywallMaterialsModel extends DrywallMaterials {
 
   factory DrywallMaterialsModel.fromJson(Map<String, dynamic> jsonMap) {
     return DrywallMaterialsModel(
-        jsonMap['angles'],
-        jsonMap['canals'],
-        jsonMap['dust_putty'],
-        jsonMap['omegas_parals'],
-        jsonMap['paint_keg'],
-        jsonMap['principals'],
-        jsonMap['putty'],
-        jsonMap['screws'],
-        jsonMap['sheets']);
+        jsonMap['angles'].toDouble(),
+        jsonMap['canals'].toDouble(),
+        jsonMap['dust_putty'].toDouble(),
+        jsonMap['omegas_parals'].toDouble(),
+        jsonMap['paint_keg'].toDouble(),
+        jsonMap['principals'].toDouble(),
+        jsonMap['putty'].toDouble(),
+        jsonMap['screws'].toInt(),
+        jsonMap['sheets'].toDouble());
   }
 
   Map<String, dynamic> toJson() {

@@ -88,7 +88,13 @@ void main() {
         when(inputConverter.stringToUnsignedDouble("6")).thenReturn(Right(6.0));
         when(inputConverter.stringToUnsignedDouble("5")).thenReturn(Right(5.0));
 
-        final expected = [Loading(), Loaded(materials: materials)];
+        final expected = [
+          Loading(),
+          Loaded(
+            materials: materials,
+            specifications: specification,
+          )
+        ];
         expectLater(bloc, emitsInOrder(expected));
 
         bloc

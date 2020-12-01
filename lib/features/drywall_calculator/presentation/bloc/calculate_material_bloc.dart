@@ -11,7 +11,6 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 part 'calculate_material_event.dart';
-
 part 'calculate_material_state.dart';
 
 const String SERVER_FAILURE_MESSAGE = 'Server failure';
@@ -49,7 +48,10 @@ class CalculateMaterialBloc extends Bloc<CalculateMaterialEvent, CalculateMateri
     final materialsOrFailure = await materialCalculator(specifications);
     yield materialsOrFailure.fold(
       (failure) => Error(_mapFailureToMessage(failure)),
-      (materials) => Loaded(materials: materials),
+      (materials) => Loaded(
+        materials: materials,
+        specifications: specifications,
+      ),
     );
   }
 

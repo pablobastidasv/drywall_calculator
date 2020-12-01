@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
 final materials = DrywallMaterialsModel(10.12, 4.92, 1.8, 20.66, 0.24, 13.52, 0.86, 202, 10.08);
+final materials2 = DrywallMaterialsModel(18.36, 8.2, 6, 73.44, 0.77, 50.49, 2.86, 672, 33.59);
 
 void main() {
   test('should be a subclass of DrywallMaterials', () {
@@ -17,11 +18,16 @@ void main() {
     test(
       'should return the drywall materials',
       () async {
-        final Map<String, dynamic> jsonMap = json.decode(fixture('materials.json'));
+        final _ = {
+          "materials.json": materials,
+          "materials2.json": materials2,
+        }.forEach((file, expected) {
+          final Map<String, dynamic> jsonMap = json.decode(fixture(file));
 
-        final result = DrywallMaterialsModel.fromJson(jsonMap);
+          final result = DrywallMaterialsModel.fromJson(jsonMap);
 
-        expect(result, materials);
+          expect(result, expected);
+        });
       },
     );
 

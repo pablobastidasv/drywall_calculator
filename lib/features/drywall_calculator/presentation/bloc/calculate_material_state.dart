@@ -16,8 +16,12 @@ class Loading extends CalculateMaterialState {
 
 class Loaded extends CalculateMaterialState {
   final DrywallMaterials materials;
+  final BuildSpecifications specifications;
 
-  Loaded({@required this.materials});
+  Loaded({
+    @required this.materials,
+    @required this.specifications,
+  });
 
   @override
   List<Object> get props => [materials];
