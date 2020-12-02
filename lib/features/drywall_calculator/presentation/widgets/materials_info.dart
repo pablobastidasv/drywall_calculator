@@ -44,7 +44,7 @@ class MaterialsInfo extends StatelessWidget {
     );
   }
 
-  Widget _buildLaminas() {
+  Widget _buildSheets() {
     return MaterialInfo(
       material: 'Láminas',
       quantity: materials.sheets,
@@ -81,21 +81,32 @@ class MaterialsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final materialsWidget = _buildInfoToShow();
+
     return Container(
       padding: EdgeInsets.all(24),
       child: Column(
-        children: [
-          _buildOmegasParales(),
-          _buildAngles(),
-          _buildPrincipales(),
-          _buildCanals(),
-          _buildLaminas(),
-          _buldScrews(),
-          _buildPaintKeg(),
-          _buildDustPutty(),
-          _buildPutty(),
-        ],
+        children: materialsWidget,
       ),
     );
+  }
+
+  List<Widget> _buildInfoToShow() {
+    var materialsWidget = <Widget>[_buildOmegasParales()];
+
+    if (specifications.job != Job.ceiling) {
+      materialsWidget.add(_buildCanals());
+    } else {
+      materialsWidget..add(_buildPrincipales())..add(_buildAngles());
+    }
+
+    return materialsWidget
+      ..addAll([
+        _buildSheets(),
+        _buldScrews(),
+        _buildPaintKeg(),
+        _buildDustPutty(),
+        _buildPutty(),
+      ]);
   }
 }
