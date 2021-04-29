@@ -11,12 +11,12 @@ class GetDrywallMaterialEvent extends CalculateMaterialEvent {
   final String material;
 
   GetDrywallMaterialEvent({
-    @required this.long,
-    @required this.width,
+    required this.long,
+    required this.width,
     this.job = "Ceiling",
     this.material = "Panel",
   });
 
   @override
-  List<Object> get props => [this.long, this.width, this.job, this.material];
+  List<Object?> get props => [this.long, this.width, this.job, this.material];
 }

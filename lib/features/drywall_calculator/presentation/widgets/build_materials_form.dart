@@ -14,8 +14,8 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
 
   var _long = '';
   var _width = '';
-  var _job = '';
-  var _material = '';
+  String _job = '';
+  String _material = '';
 
   var _area = 0.0;
   var _perimeter = 0.0;
@@ -54,7 +54,7 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
   Widget _buildJobField() {
     return DropdownButtonFormField(
       validator: _notEmptyComboBoxValidator,
-      onChanged: (value) {
+      onChanged: (dynamic value) {
         setState(() {
           _job = value;
         });
@@ -67,7 +67,7 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
   Widget _buildMaterialField() {
     return DropdownButtonFormField(
       validator: _notEmptyComboBoxValidator,
-      onChanged: (value) {
+      onChanged: (dynamic value) {
         setState(() {
           _material = value;
         });
@@ -81,10 +81,11 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
     return Row(
       children: [
         Expanded(
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text('Calcular'),
-            color: Theme.of(context).accentColor,
-            textTheme: ButtonTextTheme.primary,
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).accentColor),
+            ),
             onPressed: () {
               _onCalculate(context);
             },
@@ -95,7 +96,7 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
   }
 
   void _onCalculate(BuildContext context) {
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       BlocProvider.of<CalculateMaterialBloc>(context).add(GetDrywallMaterialEvent(
         long: this._long,
         width: this._width,
@@ -128,12 +129,12 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
     );
   }
 
-  String _notEmptyInputTextValidator(val) {
+  String? _notEmptyInputTextValidator(val) {
     if (val.isEmpty) return 'Ingrese el valor';
     return null;
   }
 
-  String _notEmptyComboBoxValidator(val) {
+  String? _notEmptyComboBoxValidator(val) {
     if (val == null) return 'Seleccione un valor';
     return null;
   }
@@ -170,8 +171,8 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
   }
 
   void _calculateArea() {
-    double long = 0;
-    double width = 0;
+    double? long = 0;
+    double? width = 0;
 
     if (!(_isNullOrEmpty(this._long) || _isNullOrEmpty(this._width))) {
       long = double.tryParse(this._long);
@@ -179,7 +180,7 @@ class _BuildMaterialsFormState extends State<BuildMaterialsForm> {
     }
 
     setState(() {
-      _area = long * width;
+      _area = long! * width!;
       _perimeter = (long * 2) + (_area * 2);
     });
   }

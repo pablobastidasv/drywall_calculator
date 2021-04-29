@@ -19,8 +19,8 @@ class Loaded extends CalculateMaterialState {
   final BuildSpecifications specifications;
 
   Loaded({
-    @required this.materials,
-    @required this.specifications,
+    required this.materials,
+    required this.specifications,
   });
 
   @override

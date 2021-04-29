@@ -6,9 +6,9 @@ class MaterialInfo extends StatelessWidget {
   final unit;
 
   const MaterialInfo({
-    Key key,
-    @required this.material,
-    @required this.quantity,
+    Key? key,
+    required this.material,
+    required this.quantity,
     this.unit = 'UND',
   }) : super(key: key);
 

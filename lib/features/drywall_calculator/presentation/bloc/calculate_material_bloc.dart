@@ -8,24 +8,22 @@ import 'package:drywall_calculator_dart/features/drywall_calculator/domain/bound
 import 'package:drywall_calculator_dart/features/drywall_calculator/domain/entity/building_specifications.dart';
 import 'package:drywall_calculator_dart/features/drywall_calculator/domain/entity/drywall_materials.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 part 'calculate_material_event.dart';
+
 part 'calculate_material_state.dart';
 
 const String SERVER_FAILURE_MESSAGE = 'Server failure';
 const String CACHE_FAILURE_MESSAGE = 'Cache failure';
 const String UNKNOWN_FAILURE_MESSAGE = 'Unknown failure';
-const String INPUT_CONVERTER_FAILURE_MESSAGE = 'Input converter failure, number should be positive or cero';
+const String INPUT_CONVERTER_FAILURE_MESSAGE = 'Input converter failure, number should be positive or zero';
 
 class CalculateMaterialBloc extends Bloc<CalculateMaterialEvent, CalculateMaterialState> {
   final MaterialCalculator materialCalculator;
   final InputConverter inputConverter;
 
-  CalculateMaterialBloc({@required this.materialCalculator, @required this.inputConverter})
-      : assert(materialCalculator != null),
-        assert(inputConverter != null),
-        super(CalculateMaterialInitial());
+  CalculateMaterialBloc({required this.materialCalculator, required this.inputConverter})
+      : super(CalculateMaterialInitial());
 
   @override
   Stream<CalculateMaterialState> mapEventToState(CalculateMaterialEvent event) async* {

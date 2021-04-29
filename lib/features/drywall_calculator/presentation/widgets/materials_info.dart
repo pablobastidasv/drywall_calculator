@@ -9,9 +9,9 @@ class MaterialsInfo extends StatelessWidget {
   final BuildSpecifications specifications;
 
   const MaterialsInfo({
-    Key key,
-    @required this.materials,
-    @required this.specifications,
+    Key? key,
+    required this.materials,
+    required this.specifications,
   }) : super(key: key);
 
   Widget _buildPutty() {

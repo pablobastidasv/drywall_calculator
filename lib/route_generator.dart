@@ -8,7 +8,7 @@ import 'core/presentation/pages/error_page.dart';
 import 'injection_container.dart';
 
 class RouteGenerator {
-  final _bloc = sl<CalculateMaterialBloc>();
+  final CalculateMaterialBloc _bloc = sl<CalculateMaterialBloc>();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     // final arg = settings.arguments;

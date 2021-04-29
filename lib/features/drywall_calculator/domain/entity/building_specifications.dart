@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:drywall_calculator_dart/core/error/failures.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 enum Material { panel, board }
 
@@ -14,8 +13,8 @@ class BuildSpecifications extends Equatable {
   final Job job;
 
   BuildSpecifications({
-    @required this.long,
-    @required this.width,
+    required this.long,
+    required this.width,
     this.material = Material.panel,
     this.job = Job.ceiling,
   })  : assert(long > 0),

@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:drywall_calculator_dart/core/presentation/input_converter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-InputConverter inputConverter;
+late InputConverter inputConverter;
 
 void main() {
   setUp(() {

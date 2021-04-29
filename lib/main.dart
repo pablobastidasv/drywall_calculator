@@ -21,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Calculadora de materiales',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.yellow,
         accentColor: Colors.yellow.shade800,

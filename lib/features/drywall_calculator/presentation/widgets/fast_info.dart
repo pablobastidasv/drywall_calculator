@@ -6,10 +6,10 @@ class FastInfo extends StatelessWidget {
   final String unit;
 
   const FastInfo({
-    Key key,
-    @required this.message,
-    @required this.quantity,
-    @required this.unit,
+    Key? key,
+    required this.message,
+    required this.quantity,
+    required this.unit,
   }) : super(key: key);
 
   @override
